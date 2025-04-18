@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang=ru>
+<head>
+<meta charset=UTF-8>
+<title>Origin-Specific Full Name Generator</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Generate distinct full names based on origin with our tool. Ideal for literary works, role-playing, or just for fun.">
+<meta property=og:title content="Full Name Generator">
+<meta property=og:type content=website>
+<meta property=og:description content="Our tool takes your chosen origin and creates a unique full name suited perfectly for it. It's an excellent resource for writers, game creators or anyone in need of a convincing name.">
+<meta name=twitter:card content=summary_large_image>
+<meta name=twitter:image content="https://namegen.com/og-images/people_full.png?v=d89a6f">
+<meta property=og:image content="https://namegen.com/og-images/people_full.png?v=d89a6f">
+<meta property=og:image:width content=1200>
+<meta property=og:image:height content=630>
+<meta property=og:site_name content="Name Generator">
+<link rel=canonical href=https://namegen.com/people/full>
+<link rel=shortcut icon href=favicon.ico type=image/png>
+<script>window.initialScripts=[];initialScripts.push("vh");initialScripts.push(["icons",'/icons-worker.js?v=d89a6f',"/images/sprites.svg?v=d89a6f"]);</script>
+<script src=begin.js async></script>
+<link rel=stylesheet href=begin.css>
+</head>
+
+<body class=page>
+<header class="header page__header">
+<div class="center header__center">
+<a href=/ class="logo header__logo" aria-label="NameGenerator logotype">
+<img src=/images/logo.svg?v=d89a6f alt class=logo__image width=232 height=36>
+</a>
+<div class=header__buttons>
+<button class="header-button header__button" id=saved-button data-popup=saved data-popup-title=Saved aria-label=Saved>
+<span class=header-button__text>Сохраненные </span>
+<div class=header-button__icon-outer>
+<span class=header-button__icon style="--u:url(/icons/heart-stroke.svg?v=d89a6f)"></span>
+<span class=header-button__catchy-icon style="--u:url(/icons/heart.svg?v=d89a6f)"></span>
+<span class=header-button__counter>0</span>
+</div>
+</button>
+<script>(updateCounter=function(f){let s=JSON.parse(localStorage.getItem("saved"))||{},c=Object.keys(s).map(k=>(s[k].values||[]).length).reduce((a,b)=>a+b,0),e=document.querySelector(".header-button__counter");e.innerText=c;e.classList.toggle("header-button__counter--visible",c);})();initialScripts.push("counter");</script>
+<button class="header-button header__button" id=menu-button aria-label=Menu>
+<span class=header-button__text>Меню</span>
+<span class=header-button__menu-icon></span>
+</button>
+</div>
+</div>
+
+<section class="menu page__menu">
+<div class=menu__inner>
+<div class="center menu__center">
+<section class="tools tools--stretched tools--micro">
+<a href=/people class="tools-item tools__item tools-item--micro" data-index=0>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Человеческие имена</p>
+<span class=tools-item__label>14 инструментов</span>
+</div>
+</div>
+</a>
+
+<a href=/fiction class="tools-item tools__item tools-item--micro" data-index=1>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/fiction.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Выдуманные именна</p>
+<span class=tools-item__label>41 инструмент </span>
+</div>
+</div>
+</a>
+
+<a href=/business class="tools-item tools__item tools-item--micro" data-index=2>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/business.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Бизнес названия</p>
+<span class=tools-item__label>8 инструментов</span>
+</div>
+</div>
+</a>
+
+<a href=/place class="tools-item tools__item tools-item--micro" data-index=3>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/place.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Название мест </p>
+<span class=tools-item__label>9 инструментов</span>
+</div>
+</div>
+</a>
+
+<a href=/media class="tools-item tools__item tools-item--micro" data-index=4>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/media.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Медиа названия</p>
+<span class=tools-item__label>4 инструмента</span>
+</div>
+</div>
+</a>
+
+<a href=/animal class="tools-item tools__item tools-item--micro" data-index=5>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/animal.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Название животных </p>
+<span class=tools-item__label>11 инструментов </span>
+</div>
+</div>
+</a>
+</section>
+
+<p class="tools-title tools-title--left">Популярные инструменты </p>
+
+<section class="tools tools--stretched tools--micro">
+<a href="/people/full" class="tools-item tools__item tools-item--micro" data-index=0>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_full.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Полные имена </p>
+</div>
+</div>
+</a>
+
+<a href="/people/ship" class="tools-item tools__item tools-item--micro" data-index=1>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_ship.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Имена судов</p>
+</div>
+</div>
+</a>
+
+<a href="/people/first" class="tools-item tools__item tools-item--micro" data-index=2>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_first.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Имена</p>
+</div>
+</div>
+</a>
+
+<a href="/place/city" class="tools-item tools__item tools-item--micro" data-index=0>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/place_city.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Название городов</p>
+<span class="tools-item__label tools-item__label--ai">AI</span>
+</div>
+</div>
+</a>
+
+<a href="/people/username" class="tools-item tools__item tools-item--micro" data-index=3>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_username.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Никнейм</p>
+<span class="tools-item__label tools-item__label--ai">AI</span>
+</div>
+</div>
+</a>
+
+<a href="/people/last" class="tools-item tools__item tools-item--micro" data-index=4>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_last.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Фамилия</p>
+</div>
+</div>
+</a>
+
+<a href="/fiction/god" class="tools-item tools__item tools-item--micro" data-index=0>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/fiction_god.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Название богов</p>
+<span class="tools-item__label tools-item__label--ai">AI</span>
+</div>
+</div>
+</a>
+
+<a href="/place/country" class="tools-item tools__item tools-item--micro" data-index=1>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/place_country.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Название стран</p>
+<span class="tools-item__label tools-item__label--ai">AI</span>
+</div>
+</div>
+</a>
+
+<a href="/people/generative" class="tools-item tools__item tools-item--micro" data-index=5>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_generative.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Генерируемые имена </p>
+</div>
+</div>
+</a>
+
+<a href="/people/clan" class="tools-item tools__item tools-item--micro" data-index=6>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_clan.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact"> Имена групп </p>
+<span class="tools-item__label tools-item__label--ai">AI</span>
+</div>
+</div>
+</a>
+
+<a href="/business/brand" class="tools-item tools__item tools-item--micro" data-index=0>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/business_brand.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Наименование брендов</p>
+<span class="tools-item__label tools-item__label--ai">AI</span>
+</div>
+</div>
+</a>
+
+<a href="/fiction/demon" class="tools-item tools__item tools-item--micro" data-index=1>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/fiction_demon.svg?v=d89a6f)"></span>
+<p class="tools-item__title tools-item__title--compact">Название демонов</p>
+<span class="tools-item__label tools-item__label--ai">AI</span>
+</div>
+</div>
+</a>
+</section>
+</div>
+</div>
+</section>
+</header>
+
+<script>(()=>{const i=new IntersectionObserver(([e])=>{e.target.classList.toggle("header--sticked",e.intersectionRatio<1);},{threshold:[1]});i.observe(document.currentScript.previousElementSibling);})();initialScripts.push("menu");</script>
+
+<script>const TOOL_CONFIG={name:"Full Name Generator",saved_key:"FullNames",copy:{success:"Copied",error:"Not copied",},notices:{input:"Please use Latin letters",empty:"We didn't find any results for this query, please enter a different value and try again",error:"Something went wrong, please try again",rules:"Please use Latin letters",check:"Please check the accuracy of your input",},forms:{}};</script>
+
+<script>TOOL_CONFIG.forms.instant={items_per_page:24,fields:[{"type":"select","label":"Gender","icon":"gender","options":[{"value":"any","label":"Any","selected":true},{"value":"female","label":"Female"},{"value":"male","label":"Male"}]},{"type":"select","label":"Origin","icon":"world","options":[{"value":"","label":"Any","selected":true},{"value":"arabic","label":"Arabic"},{"value":"armenian","label":"Armenian"},{"value":"basque","label":"Basque"},{"value":"belarusian","label":"Belarusian"},{"value":"bulgarian","label":"Bulgarian"},{"value":"catalan","label":"Catalan"},{"value":"croatian","label":"Croatian"},{"value":"czech","label":"Czech"},{"value":"danish","label":"Danish"},{"value":"dutch","label":"Dutch"},{"value":"english","label":"English"},{"value":"filipino","label":"Filipino"},{"value":"finnish","label":"Finnish"},{"value":"french","label":"French"},{"value":"galician","label":"Galician"},{"value":"german","label":"German"},{"value":"greek","label":"Greek"},{"value":"hungarian","label":"Hungarian"},{"value":"indian","label":"Indian"},{"value":"iranian","label":"Iranian"},{"value":"irish","label":"Irish"},{"value":"italian","label":"Italian"},{"value":"japanese","label":"Japanese"},{"value":"jewish","label":"Jewish"},{"value":"korean","label":"Korean"},{"value":"latvian","label":"Latvian"},{"value":"lithuanian","label":"Lithuanian"},{"value":"norwegian","label":"Norwegian"},{"value":"polish","label":"Polish"},{"value":"portuguese","label":"Portuguese"},{"value":"romanian","label":"Romanian"},{"value":"russian","label":"Russian"},{"value":"scottish","label":"Scottish"},{"value":"serbian","label":"Serbian"},{"value":"slovak","label":"Slovak"},{"value":"slovenian","label":"Slovenian"},{"value":"spanish","label":"Spanish"},{"value":"swedish","label":"Swedish"},{"value":"turkish","label":"Turkish"},{"value":"ukrainian","label":"Ukrainian"},{"value":"vietnamese","label":"Vietnamese"},{"value":"welsh","label":"Welsh"}]}],request:{more_url:"/more/full-names/",url:"/wk/full-names/",composer:(url,query)=>url+query.join("/"),parser:(response,query)=>{return JSON.parse(response)?.result?.map(item=>{let gender="";if(!query||query[0]=="any"){gender=` <i>(${item[1]})</i>`;}return `${item[0]}${gender}`;});},}};</script>
+
+<script>for(let formKey in TOOL_CONFIG.forms){let form=TOOL_CONFIG.forms[formKey];form.fields?.forEach(field=>{["validation","allowed"].forEach(prop=>{if(field[prop]&&typeof field[prop]=="string"&&field[prop].length){field[prop]=new RegExp(field[prop].slice(1,-1));}});});}</script>
+
+<article class="content page__content">
+<div class="center content__center">
+<section class=content__top>
+<section class="text-content content__text-content text-content--image">
+<div class="top-image text-content__image">
+<img class=top-image__image src=https://naked-science.ru/wp-content/uploads/2019/11/216346_web.jpg srcset="/hero-images/full_0@2x.webp 2x" alt>
+</div>
+
+<div class=text-content__text-outer>
+<p class="route text-content__route" data-nosnippet>
+<a href=/ class=route__link>
+<span class=route__title>
+<span class=route__icon style="--u:url(/icons/pages/home.svg?v=d89a6f)"></span>
+Main</span>
+</a>
+<span class="route__icon route__icon--min" style="--u:url(/icons/icon=arrow_forward_ios.svg?v=d89a6f)"></span>
+<a href=/people class=route__link>
+<span class=route__title>
+<span class=route__icon style="--u:url(/icons/pages/people.svg?v=d89a6f)"></span>
+People</span>
+</a>
+<span class="route__icon route__icon--min" style="--u:url(/icons/icon=arrow_forward_ios.svg?v=d89a6f)"></span>
+<span class=route__title>
+<span class=route__icon style="--u:url(/icons/pages/people_full.svg?v=d89a6f)"></span>
+Full Names</span>
+</p>
+
+<h1 class=text-content__title data-nosnippet>Полная генерация инструмент </h1>
+<p class=text-content__text>Используйте этот инструмент, чтобы придумать правдоподобное полное имя, соответствующее выбранному вами происхождению. Просто выберите параметры, нажмите кнопку, и все готово.</p>
+</div>
+
+<form method=GET action=/wk/full-names/ class="tool-form text-content__form" data-type=instant>
+<label for=field0 class="input-select input-select--big tool-form__input">
+<select id=field0 class=input-select__element data-class="custom-select--stretch custom-select--padding-left">
+<option value=any selected>Какой-нибудь</option>
+<option value=female>Женский</option>
+<option value=male>Мужской </option>
+</select>
+<span class=input-select__title>Пол</span>
+<span class=input-select__icon style="--u:url(/icons/gender.svg?v=d89a6f)"></span>
+</label>
+
+<label for=field1 class="input-select input-select--big tool-form__input">
+<select id=field1 class=input-select__element data-class="custom-select--stretch custom-select--padding-left">
+<option value="" selected>Любой </option>
+<option value=arabic>Арабский</option>
+<option value=armenian>Американский </option>
+<option value=basque>Баскский</option>
+<option value=belarusian>Беларусский </option>
+<option value=bulgarian>Болгарский </option>
+<option value=catalan>Каталонский</option>
+<option value=croatian>Хорватский</option>
+<option value=czech>Чешский</option>
+<option value=danish>Датский</option>
+<option value=dutch>Голландский</option>
+<option value=english>Английский </option>
+<option value=filipino>Филиппинец</option>
+<option value=finnish>Финский</option>
+<option value=french>Французскй </option>
+<option value=galician>Галисийский</option>
+<option value=german>Немецкий</option>
+<option value=greek>Греческий</option>
+<option value=hungarian>Венгерский</option>
+<option value=indian>Индийский</option>
+<option value=iranian>Иранский</option>
+<option value=irish>Ирландский</option>
+<option value=italian>Итальянский</option>
+<option value=japanese>Японский</option>
+<option value=jewish>Иудейский</option>
+<option value=korean>Корейский</option>
+<option value=latvian>Латышский</option>
+<option value=lithuanian>Литовский</option>
+<option value=norwegian>Норвежский</option>
+<option value=polish>Польский</option>
+<option value=portuguese>Португальский</option>
+<option value=romanian>Румынский</option>
+<option value=russian>Русский</option>
+<option value=scottish>Шотландский</option>
+<option value=serbian>Сербский</option>
+<option value=slovak>Словацкий</option>
+<option value=slovenian>Словенский</option>
+<option value=spanish>Испанский</option>
+<option value=swedish>Шведский</option>
+<option value=turkish>Турецкий</option>
+<option value=ukrainian>Украинский </option>
+<option value=vietnamese>Вьетнамский </option>
+<option value=welsh>Валлийский</option>
+</select>
+<span class=input-select__title>Происхождение</span>
+<span class=input-select__icon style="--u:url(/icons/world.svg?v=d89a6f)"></span>
+</label>
+
+<button class="button button--primary button--loader tool-form__button">
+<span class=button__icon style="--u:url(/icons/bulb.svg?v=d89a6f)"></span>
+<span class=button__text>Генерация</span>
+</button>
+</form>
+<script>initialScripts.push(["fieldsCount",document.currentScript.previousElementSibling])</script>
+</section>
+</section>
+
+<section class="tool page__tool">
+<section class="results content__results">
+<div class="results__list results__list--three">
+<div class="result results__item">
+<div class=result__content>
+<div class=result__text-outer>
+<p class=result__text title=""></p>
+</div>
+<div class=result__buttons>
+<button class="result__button result__button--copy result__button--hover" data-tabindex=result aria-label="Copy result">
+<span class="result__icon result__icon--copy" style="--u:url(/icons/copy.svg?v=d89a6f)"></span>
+</button>
+<input type=checkbox id=star- class=result__input data-text= data-tabindex=result aria-label="Save result">
+<label for=star- class=result__button>
+<span class="result__icon result__icon--save-stroke" style="--u:url(/icons/heart-stroke.svg?v=d89a6f)"></span>
+<span class="result__icon result__icon--save-filled" style="--u:url(/icons/heart.svg?v=d89a6f)"></span>
+</label>
+</div>
+</div>
+</div>
+</div>
+
+<script>let TOOL_DATA=["Tatjana Kreiser <i>(f)</i>","Callum Scroggie <i>(m)</i>","Haya Perlmutter <i>(f)</i>","Arlette Eschenbrenner <i>(f)</i>","Urbano Bossio <i>(m)</i>","Deacon Holcomb <i>(m)</i>","Shavon Dodson <i>(f)</i>","Daymond Ringrose <i>(m)</i>","Katrine McQuillan <i>(f)</i>","Kizzy Briskin <i>(f)</i>","Neta Isaman <i>(f)</i>","Marcille Rochette <i>(f)</i>","Milagros Spoo <i>(f)</i>","Estelle Wickersham <i>(f)</i>","Adda Komm <i>(f)</i>","Jaymes Craton <i>(m)</i>","Ira Nicolaou <i>(f)</i>","Mina Johal <i>(f)</i>","Unity Fielding <i>(f)</i>","Anneliese Kapp <i>(f)</i>","Carole Gladd <i>(f)</i>","Isham Sommers <i>(m)</i>","Artur Gollon <i>(m)</i>","Raffaela Bacco <i>(f)</i>","Apollonia Stockburger <i>(f)</i>","Diana Zavodny <i>(f)</i>","Jonatan Kaegi <i>(m)</i>","Oda Derner <i>(f)</i>","Monia Heiken <i>(f)</i>","Mina Longshore <i>(f)</i>","Ilona Breitenfeldt <i>(f)</i>","Michel Kleppe <i>(m)</i>","Felicitas Widmark <i>(f)</i>","Roberta Rathke <i>(f)</i>","Demetrius Meseke <i>(m)</i>","Evanna Hamil <i>(f)</i>","Branden Timothy <i>(m)</i>","Leonard Brockelman <i>(m)</i>","Lucia Talaga <i>(f)</i>","Biagio Manetta <i>(m)</i>","Hana Tao <i>(f)</i>","Evaline Hazelton <i>(f)</i>","Hilda Antilla <i>(f)</i>","Charlene Flasher <i>(f)</i>","Stevenson Bosarge <i>(m)</i>","Cornelius Hemmes <i>(m)</i>","Harlan Pipe <i>(m)</i>","Aixa Lipham <i>(f)</i>"];(function(){const content=document.querySelector(".results__list");const items=content.children;const clone=items[0].cloneNode(true);const baseId=clone.querySelector(".result__input")?.getAttribute("id");const itemsPerPage=Math.min.apply(null,Object.values(TOOL_CONFIG.forms).map(form=>form.items_per_page));content.removeChild(items[0]);for(let i=items.length;i<itemsPerPage;i++){const elem=clone.cloneNode(true);const input=elem.querySelector(".result__input");if(input){const newId=`${baseId}${i}`;input.setAttribute("id",newId);elem.querySelector("label.result__button").setAttribute("for",newId);input.dataset.text=TOOL_DATA[i]||"";}elem.querySelector(".result__text").innerHTML=TOOL_DATA[i]||"";content.appendChild(elem);}})();</script>
+
+<script>updateStars=()=>{};initialScripts.push("stars");</script>
+
+<div class=tool__footer>
+<button class="button button--secondary button--responsive" data-id=backToForm>
+<span class=button__text>Вернуться к началу</span>
+</button>
+<button class="button button--primary button--loader button--responsive" id=moreResults data-form-type=instant>
+<span class=button__icon style="--u:url(/icons/more.svg?v=d89a6f)"></span>
+<span class=button__text>Генерировать больше</span>
+</button>
+</div>
+
+<script>(function(){const f=document.currentScript.previousElementSibling;const o=new IntersectionObserver(([e])=>{e.target.classList.toggle("tool__footer--sticked",e.intersectionRatio<1);requestAnimationFrame(()=>{f.classList.add("tool__footer--transition");});},{threshold:[1]});o.observe(f);})();</script>
+</section>
+</section>
+</div>
+
+<div class="share page__share">
+<div class=share__content>
+<ul class=share__list>
+<li class=share__item>Делиться:</li>
+<li class=share__item>
+<button data-href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnamegen.com%2Fpeople%2Ffull" class="share__link share__link--facebook" title=facebook>
+<span class=share__icon style="--u:url(/icons/socials/soc=facebook.svg?v=d89a6f);"></span>
+</button>
+</li>
+<li class=share__item>
+<button data-href="https://twitter.com/share?text=Generate%20distinct%20full%20names%20based%20on%20origin%20with%20our%20tool.%20Ideal%20for%20literary%20works%2C%20role-playing%2C%20or%20just%20for%20fun.&url=https%3A%2F%2Fnamegen.com%2Fpeople%2Ffull" class="share__link share__link--twitter" title=twitter>
+<span class=share__icon style="--u:url(/icons/socials/soc=twitter.svg?v=d89a6f);"></span>
+</button>
+</li>
+<li class=share__item>
+<button data-href="https://wa.me/?text=https%3A%2F%2Fnamegen.com%2Fpeople%2Ffull%20Generate%20distinct%20full%20names%20based%20on%20origin%20with%20our%20tool.%20Ideal%20for%20literary%20works%2C%20role-playing%2C%20or%20just%20for%20fun." class="share__link share__link--whatsapp" title=whatsapp>
+<span class=share__icon style="--u:url(/icons/socials/soc=whatsapp.svg?v=d89a6f);"></span>
+</button>
+</li>
+<li class=share__item>
+<button data-href="https://www.pinterest.com/pin/create/link/?url=https%3A%2F%2Fnamegen.com%2Fpeople%2Ffull&description=Generate%20distinct%20full%20names%20based%20on%20origin%20with%20our%20tool.%20Ideal%20for%20literary%20works%2C%20role-playing%2C%20or%20just%20for%20fun." class="share__link share__link--pinterest" title=pinterest>
+<span class=share__icon style="--u:url(/icons/socials/soc=pinterest.svg?v=d89a6f);"></span>
+</button>
+</li>
+<li class=share__item>
+<button data-href="https://www.reddit.com/submit?url=https%3A%2F%2Fnamegen.com%2Fpeople%2Ffull&title=Generate%20distinct%20full%20names%20based%20on%20origin%20with%20our%20tool.%20Ideal%20for%20literary%20works%2C%20role-playing%2C%20or%20just%20for%20fun." class="share__link share__link--reddit" title=reddit>
+<span class=share__icon style="--u:url(/icons/socials/soc=reddit.svg?v=d89a6f);"></span>
+</button>
+</li>
+</ul>
+<span class=share__circle style="--u:url(/icons/circle.svg?v=d89a6f);"></span>
+</div>
+</div>
+</article>
+
+<article class="recs page__recs">
+<div class=center>
+<section class="tools recs__tools">
+<a href=ship.html class="tools-item tools__item" data-index=1>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_ship.svg?v=d89a6f)"></span>
+</div>
+<p class=tools-item__title>Название судов </p>
+</div>
+<p class=tools-item__text>Хотите узнать название своего корабля? Создайте его вместе с нами мгновенно!</p>
+</a>
+
+<a href=first.html class="tools-item tools__item" data-index=2>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_first.svg?v=d89a6f)"></span>
+</div>
+<p class=tools-item__title>Имена</p>
+</div>
+<p class=tools-item__text>Открывайте культурные и гендерные названия с помощью нашего интуитивно понятного инструмента.</p>
+</a>
+
+<a href=username.html class="tools-item tools__item" data-index=3>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_username.svg?v=d89a6f)"></span>
+<span class="tools-item__label tools-item__label--ai">AI</span>
+</div>
+<p class=tools-item__title>Никнейм </p>
+</div>
+<p class=tools-item__text>Уникальные, креативные имена пользователей для вашего цифрового образа.</p>
+</a>
+
+<a href=last.html class="tools-item tools__item" data-index=4>
+<div class=tools-item__top-content>
+<div class=tools-item__header>
+<span class=tools-item__icon style="--u:url(/icons/pages/people_last.svg?v=d89a6f)"></span>
+</div>
+<p class=tools-item__title>Фамилия </p>
+</div>
+<p class=tools-item__text>Узнайте об уникальных фамилиях и их происхождении с помощью нашего генератора.</p>
+</a>
+</section>
+</div>
+</article>
+
+<section class="how page__how">
+<div class="center how__center">
+<div class=how__texts>
+<p class=how__text>Придумать хорошее имя для персонажа, которого вы создаете, может быть непросто. Вы хотите, чтобы имя было реалистичным, но не относилось ни к кому из ваших знакомых или знаменитостей. Возможно, вы также захотите, чтобы имя соответствовало происхождению персонажа. Используя наш бесплатный генератор полных имен, вы можете значительно упростить этот процесс!</p>
+<p class=how__text>Этот бесплатный браузерный инструмент идеально подходит для начинающего писателя или сценариста. Просто сделайте свой выбор и генерируйте тысячи разных имен!</p>
+<p class=how__text><b>Пользоваться этим генератором полных имен очень просто!</b></p>
+<p class=how__text>Прежде чем вы начнете просматривать имена, вы захотите сделать их менее запутанными, выбрав несколько фильтров. В раскрывающемся меню "Пол" вам нужно выбрать пол персонажа. Вы можете выбрать МУЖСКОЙ, ЖЕНСКИЙ или ЛЮБОЙ ДРУГОЙ ПОЛ, чтобы увидеть все гендеры.</p>
+<p class=how__text>Выбрав пол, вы должны выбрать происхождение. Ваш персонаж англичанин? Арабский? Французский? Выберите подходящее для персонажа происхождение из любого доступного списка.</p>
+<p class=how__text>После того, как вы сделаете свой выбор, нажмите кнопку СОЗДАТЬ. Теперь в списке названий должны отображаться только те варианты, которые соответствуют вашему выбору.</p>
+<p class=how__text>Если первые 24 имени, которые вы видите, вам не подходят, нажмите кнопку "СОЗДАТЬ ЕЩЕ". При этом будет создано больше имен, но выбранный вами фильтр останется активным.</p>
+<p class=how__text>Просматривая имена, вы должны отметить некоторые из них как избранные. Нажмите кнопку в виде сердечка рядом с любым из имен. Когда вы это сделаете, это имя будет сохранено в текущем списке. Вы можете создавать новые имена, добавлять / удалять фильтры и т.д., и ваш список останется активным.</p>
+<p class=how__text>Когда будете готовы, нажмите кнопку "СОХРАНИТЬ" в верхней части страницы (пользователям мобильных устройств следует нажать на значок сердечка рядом со строками меню). Здесь вы можете просмотреть свой список, загрузить его или удалить все и начать сначала.</p>
+</div>
+</div>
+</section>
+
+<hr class="line line--short">
+
+<footer class="footer page__footer">
+<div class="center footer__center">
+<p class=footer__copyright>
+<span>&copy; SIA Webby | </span>
+<a href=/terms class=footer__copyright-link data-popup data-popup-mod=terms data-popup-selector=.how__texts data-popup-title="Terms and Privacy Policy">Terms and Privacy Policy</a>
+</p>
+</div>
+</footer>
+
+<link rel=preload href=end.css as=style onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link rel=stylesheet href=end.css>
+</noscript>
+
+<script type=text/template id=popup-template>
+<div class="popup popup--hidden">
+<div class=popup__inner>
+<p class=popup__title></p>
+<button class=popup__close>
+<span class=popup__close-icon style="--u:url(/icons/close.svg?v=d89a6f)"></span>
+</button>
+<div class=popup__content ss-container></div>
+<div class="popup__footer saved-buttons">
+<button class="button button--primary saved-buttons__item" id=downloadAll data-tabindex=saved data-name=NameGenerator>Скачать</button>
+<button class="button button--secondary saved-buttons__item" id=deleteAll data-tabindex=saved>Удалить все </button>
+</div>
+<div class=popup__overlay data-type=saved>
+<div class=saved-confirm>
+<p class=saved-confirm__title>Вы уверены, что хотите удалить все элементы?</p>
+<div class=saved-confirm__buttons>
+<button class="button button--primary saved-confirm__button" data-tabindex=confirm id=confirmYes data-value=yes>Да, удалить</button>
+<button class="button button--secondary saved-confirm__button" data-tabindex=confirm id=confirmNo data-value=no>Нет, уходи</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</script>
+
+<script type=text/template id=pagi-template data-template=script>
+<div>
+<ul class=pagi__list data-tid=list></ul>
+<li class=pagi__item data-tid=item></li>
+<button class=pagi__button data-tid=button></button>
+<span class=pagi__text data-tid=ellipsis>&hellip;</span>
+<button class="pagi__button pagi__button--prev" data-tid=prev-button>
+<span class=pagi__text>Предыдущий</span>
+</button>
+<button class="pagi__button pagi__button--next" data-tid=next-button>
+<span class=pagi__text>Следующий</span>
+</button>
+</div>
+</script>
+
+<script type=text/template id=saved-template>
+<div class="saved popup__saved">
+<div class=saved__empty>
+<p class=saved__empty-text>Здесь нет никаких предметов </p>
+</div>
+<div class=saved__item data-slot=category>
+<p class=saved__title>
+<span class=saved__title-text data-slot=title></span>
+</p>
+<ul class="saved-list saved__list" data-slot=content>
+<div class="result results__item" data-slot=text-outer>
+<div class=result__content>
+<div class=result__text-outer>
+<p class="result__text result__text--has-line" data-slot=text></p>
+</div>
+<div class=result__buttons>
+<button class="result__button result__button--hover result__button--copy" data-tabindex=result>
+<span class="result__icon result__icon--copy" style="--u:url(/icons/copy.svg?v=d89a6f)"></span>
+</button>
+<button class="result__button result__button--erase">
+<span class="result__icon result__icon--erase" style="--u:url(/icons/cross-saved.svg?v=d89a6f)"></span>
+</button>
+<button class="result__button result__button--hidden result__button--back">
+<span class="result__icon result__icon--undo" style="--u:url(/icons/undo.svg?v=d89a6f)"></span>
+</button>
+</div>
+</div>
+</div>
+</ul>
+</div>
+</div>
+</script>
+
+<script type=text/template id=notice-template>
+<li class=notice__item>
+<div class=notice__content>
+<span class=notice__type>
+<span class=notice__type-icon style="--u:url(/icons/info.svg?v=d89a6f)"></span>
+</span>
+<p class=notice__text data-elem=text></p>
+<button class=notice__close>
+<span class=notice__close-icon style="--u:url(/icons/close.svg?v=d89a6f)"></span>
+</button>
+</div>
+</li>
+</script>
+
+<script src=custom-select.js defer></script>
+<script src=common.js? defer></script>
+<script src=simple-scrollbar.js defer></script>
+
+<script>var _paq=window._paq=window._paq||[];_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function(){var u="https://stats.monohost.com/";_paq.push(['setTrackerUrl',u+'matomo.php']);_paq.push(['setSiteId','158']);var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];g.async=true;g.src=u+'matomo.js';s.parentNode.insertBefore(g,s);})();</script>
+</body>
+</html>

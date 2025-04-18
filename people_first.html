@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор имен по происхождению</title>
+    <meta name="description" content="Эффективно генерируйте имена на основе выбранного пола и происхождения">
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --light-text: #6c757d;
+            --border-color: #dee2e6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f7ff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .main {
+            padding: 40px 0;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #3a5bef;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .results-container {
+            margin-top: 30px;
+        }
+
+        .results-list {
+            list-style: none;
+        }
+
+        .results-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .results-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .copy-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #e05555;
+        }
+
+        .saved-btn {
+            background-color: #6c757d;
+            margin-left: 10px;
+        }
+
+        .saved-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .actions {
+            display: flex;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            margin-top: 40px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo.svg">Генератор имен</a>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="card">
+                <h1>Генератор имен по происхождению</h1>
+                <p>Выберите параметры и получите уникальные имена</p>
+                
+                <form id="nameGeneratorForm">
+                    <div class="form-group">
+                        <label for="gender">Пол:</label>
+                        <select name="gender" id="gender" required>
+                            <option value="" disabled selected>Выберите пол</option>
+                            <option value="male">Мужской</option>
+                            <option value="female">Женский</option>
+                            <option value="unisex">Унисекс</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="origin">Происхождение:</label>
+                        <select name="origin" id="origin" required>
+                            <option value="" disabled selected>Выберите происхождение</option>
+                            <option value="russian">Русское</option>
+                            <option value="english">Английское</option>
+                            <option value="french">Французское</option>
+                            <option value="german">Немецкое</option>
+                            <option value="spanish">Испанское</option>
+                            <option value="italian">Итальянское</option>
+                            <option value="japanese">Японское</option>
+                            <option value="chinese">Китайское</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">Количество имен (1-20):</label>
+                        <input type="number" name="quantity" id="quantity" min="1" max="20" value="5" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Сгенерировать имена</button>
+                </form>
+            </div>
+            
+            <div class="card results-container" id="resultsContainer" style="display: none;">
+                <h2>Результаты:</h2>
+                <ul class="results-list" id="resultsList"></ul>
+                
+                <div style="margin-top: 20px;">
+                    <button id="copyAllBtn" class="btn">Копировать все</button>
+                    <button id="saveAllBtn" class="btn saved-btn">Сохранить все</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 Генератор имен. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('nameGeneratorForm');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsList = document.getElementById('resultsList');
+            const copyAllBtn = document.getElementById('copyAllBtn');
+            const saveAllBtn = document.getElementById('saveAllBtn');
+            
+            // База данных имен
+            const namesDatabase = {
+                male: {
+                    russian: ["Александр", "Дмитрий", "Михаил", "Сергей", "Андрей", "Алексей", "Артём", "Илья", "Кирилл", "Максим"],
+                    english: ["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles"],
+                    french: ["Jean", "Pierre", "Michel", "Philippe", "Alain", "Nicolas", "Christophe", "Patrick", "Daniel", "Jacques"],
+                    german: ["Michael", "Thomas", "Andreas", "Stefan", "Christian", "Martin", "Wolfgang", "Klaus", "Jürgen", "Hans"],
+                    spanish: ["José", "Manuel", "Antonio", "Francisco", "Juan", "David", "Javier", "Daniel", "Carlos", "Miguel"],
+                    italian: ["Giuseppe", "Antonio", "Giovanni", "Francesco", "Mario", "Luigi", "Roberto", "Marco", "Paolo", "Andrea"],
+                    japanese: ["Hiroshi", "Kenji", "Takashi", "Yuji", "Taro", "Yuki", "Haruto", "Riku", "Ren", "Daichi"],
+                    chinese: ["Wei", "Ming", "Lei", "Jun", "Tao", "Jie", "Yang", "Xin", "Bo", "Jian"]
+                },
+                female: {
+                    russian: ["Анна", "Мария", "Елена", "Ольга", "Наталья", "Ирина", "Светлана", "Татьяна", "Екатерина", "Юлия"],
+                    english: ["Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Karen"],
+                    french: ["Marie", "Nathalie", "Isabelle", "Sylvie", "Catherine", "Françoise", "Monique", "Martine", "Christine", "Valérie"],
+                    german: ["Maria", "Ursula", "Monika", "Petra", "Elisabeth", "Sabine", "Renate", "Helga", "Brigitte", "Ingrid"],
+                    spanish: ["María", "Carmen", "Ana", "Isabel", "Dolores", "Pilar", "Teresa", "Rosa", "Lucía", "Josefa"],
+                    italian: ["Maria", "Anna", "Giuseppina", "Rosa", "Angela", "Giovanna", "Teresa", "Lucia", "Franca", "Paola"],
+                    japanese: ["Yuki", "Hana", "Aoi", "Sakura", "Rin", "Mei", "Yui", "Mio", "Hinata", "Riko"],
+                    chinese: ["Mei", "Ling", "Xia", "Jing", "Li", "Xiu", "Fang", "Yan", "Lan", "Hong"]
+                },
+                unisex: {
+                    russian: ["Саша", "Женя", "Валя", "Шура"],
+                    english: ["Alex", "Taylor", "Jordan", "Casey", "Jamie", "Morgan", "Riley", "Avery", "Quinn", "Charlie"],
+                    french: ["Dominique", "Camille", "Claude", "Noël"],
+                    german: ["Kim", "Andrea", "Robin", "Nicola"],
+                    spanish: ["Alex", "Dani", "Adri", "Jesús"],
+                    italian: ["Andrea", "Alex", "Daniele"],
+                    japanese: ["Akira", "Haru", "Ren", "Sora"],
+                    chinese: ["Wei", "Jing", "Min", "Qing"]
+                }
+            };
+            
+            // Обработка отправки формы
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const gender = form.gender.value;
+                const origin = form.origin.value;
+                const quantity = parseInt(form.quantity.value);
+                
+                // Проверка ввода
+                if (quantity < 1 || quantity > 20) {
+                    alert("Пожалуйста, введите количество от 1 до 20.");
+                    return;
+                }
+                
+                // Генерация имен
+                const names = generateNames(gender, origin, quantity);
+                
+                // Отображение результатов
+                displayResults(names);
+            });
+            
+            // Функция генерации имен
+            function generateNames(gender, origin, quantity) {
+                const namesPool = namesDatabase[gender][origin];
+                const result = [];
+                
+                // Если запрошено больше имен, чем есть в базе, повторяем имена
+                for (let i = 0; i < quantity; i++) {
+                    const randomIndex = Math.floor(Math.random() * namesPool.length);
+                    result.push(namesPool[randomIndex]);
+                }
+                
+                return result;
+            }
+            
+            // Функция отображения результатов
+            function displayResults(names) {
+                resultsList.innerHTML = '';
+                
+                names.forEach(name => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <span>${name}</span>
+                        <div class="actions">
+                            <button class="copy-btn" data-name="${name}">Копировать</button>
+                            <button class="copy-btn saved-btn" data-name="${name}">Сохранить</button>
+                        </div>
+                    `;
+                    resultsList.appendChild(li);
+                });
+                
+                // Показываем контейнер с результатами
+                resultsContainer.style.display = 'block';
+                
+                // Добавляем обработчики для кнопок копирования
+                document.querySelectorAll('.copy-btn:not(.saved-btn)').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const name = this.getAttribute('data-name');
+                        copyToClipboard(name);
+                        this.textContent = 'Скопировано!';
+                        setTimeout(() => {
+                            this.textContent = 'Копировать';
+                        }, 2000);
+                    });
+                });
+                
+                // Добавляем обработчики для кнопок сохранения
+                document.querySelectorAll('.copy-btn.saved-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const name = this.getAttribute('data-name');
+                        saveName(name);
+                        this.textContent = 'Сохранено!';
+                        setTimeout(() => {
+                            this.textContent = 'Сохранить';
+                        }, 2000);
+                    });
+                });
+            }
+            
+            // Копирование в буфер обмена
+            function copyToClipboard(text) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+            
+            // Сохранение имени
+            function saveName(name) {
+                // Здесь можно добавить логику сохранения имен
+                // Например, в localStorage или отправку на сервер
+                console.log(`Сохранено имя: ${name}`);
+            }
+            
+            // Копирование всех имен
+            copyAllBtn.addEventListener('click', function() {
+                const names = Array.from(resultsList.querySelectorAll('li span')).map(span => span.textContent);
+                copyToClipboard(names.join('\n'));
+                this.textContent = 'Все скопировано!';
+                setTimeout(() => {
+                    this.textContent = 'Копировать все';
+                }, 2000);
+            });
+            
+            // Сохранение всех имен
+            saveAllBtn.addEventListener('click', function() {
+                const names = Array.from(resultsList.querySelectorAll('li span')).map(span => span.textContent);
+                names.forEach(name => saveName(name));
+                this.textContent = 'Все сохранено!';
+                setTimeout(() => {
+                    this.textContent = 'Сохранить все';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>Генератор имен, случайных псевдонимов и названий </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This site generates names for any occasion. Quickly and easily create unique names for characters, events, and more using AI.">
+    <meta property="og:title" content="Name Generator">
+    <meta property="og:type" content="website"  />
+    <meta property="og:description" content="Looking for the right name? Our generator makes it easy. From businesses to novels, discover names that fit. Quick, simple, effective.">
+    <meta name="twitter:card" content="summary_large_image"  />
+    <meta name="twitter:image" content="https://namegen.com/og-images/og.png?v=d89a6f"  />
+    <meta property="og:image" content="https://namegen.com/og-images/og.png?v=d89a6f"  />
+    <meta property="og:image:width" content="1200"  />
+    <meta property="og:image:height" content="630"  />
+    <meta property="og:site_name" content="Name Generator"  />
+    <link rel="canonical" href="https://namegen.com/">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png"  />
+    <script>
+    window.initialScripts = []; initialScripts.push("vh"); initialScripts.push(["icons", '/icons-worker.js?v=d89a6f', "/images/sprites.svg?v=d89a6f"]);</script>
+    <script src="begin.jsf" async></script>
+    <link rel="stylesheet" href="begin.css">
+  </head>
+  <body class="page">
+    <header class="header page__header">
+      <div class="center header__center">
+        <a href="index.html" class="logo header__logo" aria-label="NameGenerator logotype">
+          <img src="logo.svg" alt="" class="logo__image" width="250" height="150">
+        </a>
+        <div class="header__buttons">
+          <button class="header-button header__button" id="saved-button" data-popup="saved" data-popup-title="Saved" aria-label="Saved">
+            <span class="header-button__text">Сохраненные</span>
+            <div class="header-button__icon-outer">
+              <span class="header-button__icon" style="--u:url(/icons/heart-stroke.svg?v=d89a6f)"></span>
+              <span class="header-button__catchy-icon" style="--u:url(/icons/heart.svg?v=d89a6f)"></span>
+              <span class="header-button__counter">0</span>
+            </div>
+          </button>
+          <script>
+          (updateCounter = function (f) { let s = JSON.parse(localStorage.getItem("saved")) || {}, c = Object.keys(s).map(k => (s[k].values || []).length).reduce((a, b) => a + b, 0), e = document.querySelector(".header-button__counter"); e.innerText = c; e.classList.toggle("header-button__counter--visible", c); })(); initialScripts.push("counter");</script>
+          <button class="header-button header__button" id="menu-button" aria-label="Menu">
+            <span class="header-button__text">Меню</span>
+            <span class="header-button__menu-icon"></span>
+          </button>
+        </div>
+      </div>
+      <section class="menu page__menu">
+        <div class="menu__inner">
+          <div class="center menu__center">
+            <section class="tools tools--stretched tools--micro">
+              <a href="/people.html" class="tools-item tools__item tools-item--micro" data-index = 0>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/people.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Человеческие имена</p>
+                    <span class="tools-item__label">14 инструментов</span>
+                  </div>
+                </div>
+              </a>
+              <a href="fiction.html" class="tools-item tools__item tools-item--micro" data-index = 1>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/fiction.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Вымышленные имена </p>
+                    <span class="tools-item__label">41 инструмент</span>
+                  </div>
+                </div>
+              </a>
+              <a href="business.html" class="tools-item tools__item tools-item--micro" data-index = 2>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/business.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Бизнес названия</p>
+                    <span class="tools-item__label">8 инструментов </span>
+                  </div>
+                </div>
+              </a>
+              <a href="place.html" class="tools-item tools__item tools-item--micro" data-index = 3>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/place.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Название мест </p>
+                    <span class="tools-item__label">9 инструментов </span>
+                  </div>
+                </div>
+              </a>
+              <a href="media.html" class="tools-item tools__item tools-item--micro" data-index = 4>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/media.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Медиа названия </p>
+                    <span class="tools-item__label">4 инструента </span>
+                  </div>
+                </div>
+              </a>
+              <a href="animal.html" class="tools-item tools__item tools-item--micro" data-index = 5>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/animal.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Название животных </p>
+                    <span class="tools-item__label">11 инструмент </span>
+                  </div>
+                </div>
+              </a>
+            </section>
+            <p class="tools-title tools-title--left">Популярные инструменты </p>
+            <section class="tools tools--stretched tools--micro">
+              <a href="people_full.html" class="tools-item tools__item tools-item--micro" data-index = 0>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/people_full.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Полные имена </p>
+                  </div>
+                </div>
+              </a>
+              <a href="people_ship.html" class="tools-item tools__item tools-item--micro" data-index = 1>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/people_ship.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Название пар</p>
+                  </div>
+                </div>
+              </a>
+              <a href="people_first.html" class="tools-item tools__item tools-item--micro" data-index = 2>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/people_first.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Имя</p>
+                  </div>
+                </div>
+              </a>
+              <a href="place_city.html" class="tools-item tools__item tools-item--micro" data-index = 0>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/place_city.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Название городов </p>
+                    <span class="tools-item__label tools-item__label--ai">AI</span>
+                  </div>
+                </div>
+              </a>
+              <a href="people_username.html" class="tools-item tools__item tools-item--micro" data-index = 3>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/people_username.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Никнеймы</p>
+                    <span class="tools-item__label tools-item__label--ai">AI</span>
+                  </div>
+                </div>
+              </a>
+              <a href="people_last.html" class="tools-item tools__item tools-item--micro" data-index = 4>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/people_last.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Фамилия</p>
+                  </div>
+                </div>
+              </a>
+              <a href="fiction_god.html" class="tools-item tools__item tools-item--micro" data-index = 0>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/fiction_god.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Имена богов </p>
+                    <span class="tools-item__label tools-item__label--ai">AI</span>
+                  </div>
+                </div>
+              </a>
+              <a href="place_country.html" class="tools-item tools__item tools-item--micro" data-index = 1>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/place_country.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Названия стран </p>
+                    <span class="tools-item__label tools-item__label--ai">AI</span>
+                  </div>
+                </div>
+              </a>
+              <a href="people_generative.html" class="tools-item tools__item tools-item--micro" data-index = 5>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/people_generative.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Генеративные имена </p>
+                  </div>
+                </div>
+              </a>
+              <a href="people_clan.html" class="tools-item tools__item tools-item--micro" data-index = 6>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/people_clan.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Название для групп </p>
+                    <span class="tools-item__label tools-item__label--ai">AI</span>
+                  </div>
+                </div>
+              </a>
+              <a href="business_brand.html" class="tools-item tools__item tools-item--micro" data-index = 0>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/business_brand.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Наименования брендов </p>
+                    <span class="tools-item__label tools-item__label--ai">AI</span>
+                  </div>
+                </div>
+              </a>
+              <a href="fiction_demon.html" class="tools-item tools__item tools-item--micro" data-index = 1>
+                <div class="tools-item__top-content">
+                  <div class="tools-item__header">
+                    <span class="tools-item__icon" style='--u: url(/icons/pages/fiction_demon.svg?v=d89a6f)'></span>
+                    <p class="tools-item__title tools-item__title--compact">Демонические имена </p>
+                    <span class="tools-item__label tools-item__label--ai">AI</span>
+                  </div>
+                </div>
+              </a>
+            </section>
+          </div>
+        </div>
+      </section>
+    </header>
+    <script>
+    (()=>{ const i = new IntersectionObserver(([e]) => { e.target.classList.toggle("header--sticked", e.intersectionRatio<1); },{threshold: [1]}); i.observe(document.currentScript.previousElementSibling); })(); initialScripts.push("menu");</script>
+    <article class="content page__content">
+      <div class="center content__center">
+        <section class="content__top">
+        <section class="text-content content__text-content text-content--center text-content--no-input">
+          <div class="text-content__text-outer">
+            <p class="text-content__main-text">Нужна помощь в поиске идеального имени? Наши генераторы имен предлагают широкий выбор вариантов, которые вдохновят вас. Откройте для себя новые идеи всего несколькими щелчками мыши.</p>
+          </div>
+        </section>
+        <section class="tools tools--stretched">
+          <a href="people.html" class="tools-item tools__item" data-index = 0>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/people.svg?v=d89a6f)'></span>
+                <span class="tools-item__label">14 инструментов </span>
+              </div>
+              <p class="tools-item__title">Человеческие имена </p>
+            </div>
+            <p class="tools-item__text">Создавайте уникальные и запоминающиеся имена для отдельных людей, команд и романтических пар.</p>
+          </a>
+          <a href="/fiction" class="tools-item tools__item" data-index = 1>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/fiction.svg?v=d89a6f)'></span>
+                <span class="tools-item__label">41 инструмент </span>
+              </div>
+              <p class="tools-item__title">Вымышленные имена </p>
+            </div>
+            <p class="tools-item__text">Специальный раздел для создания имен вымышленных персонажей.</p>
+          </a>
+          <a href="/business" class="tools-item tools__item" data-index = 2>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/business.svg?v=d89a6f)'></span>
+                <span class="tools-item__label">8 инструментов </span>
+              </div>
+              <p class="tools-item__title">Бизнес имена </p>
+            </div>
+            <p class="tools-item__text">Создавайте привлекательные названия для компаний с помощью инструментов, управляемых искусственным интеллектом.</p>
+          </a>
+          <a href="/place" class="tools-item tools__item" data-index = 3>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/place.svg?v=d89a6f)'></span>
+                <span class="tools-item__label">9 инструментов </span>
+              </div>
+              <p class="tools-item__title"> Название мест </p>
+            </div>
+            <p class="tools-item__text">Креативные название мест.</p>
+          </a>
+          <a href="/media" class="tools-item tools__item" data-index = 4>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/media.svg?v=d89a6f)'></span>
+                <span class="tools-item__label">4 инструмента </span>
+              </div>
+              <p class="tools-item__title">Медиа названия </p>
+            </div>
+            <p class="tools-item__text">Создавайте привлекательные и креативные заголовки для различных медиа-форматов с помощью искусственного интеллекта.</p>
+          </a>
+          <a href="/animal" class="tools-item tools__item" data-index = 5>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/animal.svg?v=d89a6f)'></span>
+                <span class="tools-item__label">11 инструментов </span>
+              </div>
+              <p class="tools-item__title">Название животных 
+            </div>
+            <p class="tools-item__text">Предлагаем различные генераторы названий животных для ваших нужд.</p>
+          </a>
+        </section>
+        <p class="tools-title">Популярные инструменты </p>
+        <section class="tools tools--stretched tools--micro">
+          <a href="/people/full" class="tools-item tools__item tools-item--mini" data-index = 0>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/people_full.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Полные имена </p>
+              </div>
+            </div>
+          </a>
+          <a href="/people/ship" class="tools-item tools__item tools-item--mini" data-index = 1>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/people_ship.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Название пар</p>
+              </div>
+            </div>
+          </a>
+          <a href="/people/first" class="tools-item tools__item tools-item--mini" data-index = 2>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/people_first.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Имена</p>
+              </div>
+            </div>
+          </a>
+          <a href="/place/city" class="tools-item tools__item tools-item--mini" data-index = 0>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/place_city.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Название городов </p>
+                <span class="tools-item__label tools-item__label--ai">AI</span>
+              </div>
+            </div>
+          </a>
+          <a href="/people/username" class="tools-item tools__item tools-item--mini" data-index = 3>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/people_username.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Никнеймы</p>
+                <span class="tools-item__label tools-item__label--ai">AI</span>
+              </div>
+            </div>
+          </a>
+          <a href="/people/last" class="tools-item tools__item tools-item--mini" data-index = 4>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/people_last.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Фамилия</p>
+              </div>
+            </div>
+          </a>
+          <a href="/fiction/god" class="tools-item tools__item tools-item--mini" data-index = 0>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/fiction_god.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Название богов </p>
+                <span class="tools-item__label tools-item__label--ai">AI</span>
+              </div>
+            </div>
+          </a>
+          <a href="/place/country" class="tools-item tools__item tools-item--mini" data-index = 1>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/place_country.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Название страны</p>
+                <span class="tools-item__label tools-item__label--ai">AI</span>
+              </div>
+            </div>
+          </a>
+          <a href="/people/generative" class="tools-item tools__item tools-item--mini" data-index = 5>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/people_generative.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Генеративные имена </p>
+              </div>
+            </div>
+          </a>
+          <a href="/people/clan" class="tools-item tools__item tools-item--mini" data-index = 6>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/people_clan.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Название групп </p>
+                <span class="tools-item__label tools-item__label--ai">AI</span>
+              </div>
+            </div>
+          </a>
+          <a href="/business/brand" class="tools-item tools__item tools-item--mini" data-index = 0>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/business_brand.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Наименование брендов </p>
+                <span class="tools-item__label tools-item__label--ai">AI</span>
+              </div>
+            </div>
+          </a>
+          <a href="/fiction/demon" class="tools-item tools__item tools-item--mini" data-index = 1>
+            <div class="tools-item__top-content">
+              <div class="tools-item__header">
+                <span class="tools-item__icon" style='--u: url(/icons/pages/fiction_demon.svg?v=d89a6f)'></span>
+                <p class="tools-item__title tools-item__title--compact">Демонические наименования </p>
+                <span class="tools-item__label tools-item__label--ai">AI</span>
+              </div>
+            </div>
+          </a>
+        </section>
+      </div>
+      <div class="share page__share">
+        <div class="share__content">
+          <ul class="share__list">
+            <li class="share__item">Поделиться:</li>
+            <li class="share__item">
+              <button data-href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnamegen.com%2F" class="share__link share__link--facebook" title="facebook">
+                <span class="share__icon" style="--u: url(/icons/socials/soc=facebook.svg?v=d89a6f);"></span>
+              </button>
+            </li>
+            <li class="share__item">
+              <button data-href="https://twitter.com/share?text=This%20site%20generates%20names%20for%20any%20occasion.%20Quickly%20and%20easily%20create%20unique%20names%20for%20characters%2C%20events%2C%20and%20more%20using%20AI.&url=https%3A%2F%2Fnamegen.com%2F" class="share__link share__link--twitter" title="twitter">
+                <span class="share__icon" style="--u: url(/icons/socials/soc=twitter.svg?v=d89a6f);"></span>
+              </button>
+            </li>
+            <li class="share__item">
+              <button data-href="https://wa.me/?text=https%3A%2F%2Fnamegen.com%2F%20This%20site%20generates%20names%20for%20any%20occasion.%20Quickly%20and%20easily%20create%20unique%20names%20for%20characters%2C%20events%2C%20and%20more%20using%20AI." class="share__link share__link--whatsapp" title="whatsapp">
+                <span class="share__icon" style="--u: url(/icons/socials/soc=whatsapp.svg?v=d89a6f);"></span>
+              </button>
+            </li>
+            <li class="share__item">
+              <button data-href="https://www.pinterest.com/pin/create/link/?url=https%3A%2F%2Fnamegen.com%2F&description=This%20site%20generates%20names%20for%20any%20occasion.%20Quickly%20and%20easily%20create%20unique%20names%20for%20characters%2C%20events%2C%20and%20more%20using%20AI." class="share__link share__link--pinterest" title="pinterest">
+                <span class="share__icon" style="--u: url(/icons/socials/soc=pinterest.svg?v=d89a6f);"></span>
+              </button>
+            </li>
+            <li class="share__item">
+              <button data-href="https://www.reddit.com/submit?url=https%3A%2F%2Fnamegen.com%2F&title=This%20site%20generates%20names%20for%20any%20occasion.%20Quickly%20and%20easily%20create%20unique%20names%20for%20characters%2C%20events%2C%20and%20more%20using%20AI." class="share__link share__link--reddit" title="reddit">
+                <span class="share__icon" style="--u: url(/icons/socials/soc=reddit.svg?v=d89a6f);"></span>
+              </button>
+            </li>
+          </ul>
+          <span class="share__circle" style="--u: url(/icons/circle.svg?v=d89a6f);"></span>
+        </div>
+      </div>
+    </article>
+    <section class="how page__how">
+      <div class="center how__center">
+        <h1 class="how__title">Генератор имен</h1>
+        <div class="how__texts">
+          <p class="how__text">У всех и вся есть имена. Но знаете ли вы, что с именами можно придумать массу забавных вещей? Если нет, то вы обратились по адресу, так как сейчас находитесь на странице Генератор имен! На этой странице представлены различные бесплатные браузерные инструменты, позволяющие развить творческий потенциал и превратить название в нечто совершенно иное или создать новые названия для вещей, о которых вы раньше и не подумали бы.</p>
+          <p class="how__text"><b>Использование генератора имен</b></p>
+          <p class="how__text">Каждый из представленных здесь инструментов работает немного по-своему. Однако все они имеют какое—то отношение к названиям - и вы можете использовать их сколько угодно!</p>
+          <p class="how__text">Например, <a href='/people/diminutive'>Уменьшительные</a>, наш инструмент для создания псевдонимов создает десятки или даже сотни псевдонимов на основе букв и звуков вашего полного имени. Между тем, инструмент <a href="/people/generative">Генерирующие имена</a> использует алгоритм для создания тысяч несуществующих имен, идеально подходящих для того фантастического романа или научно-фантастического сценария, который вы пишете. Заинтересованы в поиске популярных имен в вашей стране происхождения? Наш <a href='/people/first'>Генератор имен</a> я перечислю тысячи имен и дам вам знать, откуда они взялись.</p>
+          <p class="how__text">На этой странице так много полезных инструментов. Обязательно ознакомьтесь с ними!</p>
+          <p class="how__text"><b>Советы по работе с генератором имен</b></p>
+          <p class="how__text">Каждый из представленных здесь инструментов позволит вам сохранить понравившиеся имена, нажав на кнопку в виде сердечка. Это позволит сохранить выбранные вами имена в виде списка, который вы затем сможете загрузить и сохранить.</p>
+          <p class="how__text">Вверху страницы каждого инструмента вы увидите кнопку "СОХРАНИТЬ". Если вы пользуетесь мобильным устройством, это значок в виде сердечка рядом со строками меню. Нажмите на него, и вы увидите список всех имен, которые вы сохранили во всех инструментах для создания имен. Вы можете нажать кнопку ЗАГРУЗКИ, чтобы сохранить эти списки на потом. Однако вы можете свободно переключаться между инструментами или даже покинуть страницу, если это необходимо. Ваш список будет там, когда вы вернетесь, при условии, что вы не удалите кэш / файлы cookie вашего браузера.</p>
+          <p class="how__text"><b>Безопасны ли инструменты для создания имен?</b></p>
+          <p class="how__text">Ваша безопасность - наш приоритет номер один. Все наши инструменты работают через браузер, поэтому вам не нужно ничего скачивать. Кроме того, все инструменты на 100% бесплатны, поэтому вам не нужно предоставлять нам конфиденциальную информацию, такую как номера кредитных карт или адреса. Наконец, наши серверы регулярно удаляют информацию о посетителях (например, имена, которые вы вводите в формы), поэтому ваши данные никогда не сохраняются. Вы можете быть уверены, что ваше пребывание здесь безопасно, так что не стесняйтесь задерживаться!</p>
+        </div>
+      </div>
+    </section>
+    <hr class="line line--short">
+    <footer class="footer page__footer">
+      <div class="center footer__center">
+        <p class="footer__copyright">
+          <span>&copy; SIA Webby | </span>
+          <a href="/terms" class="footer__copyright-link" data-popup data-popup-mod="terms" data-popup-selector=".how__texts" data-popup-title="Terms and Privacy Policy">Terms and Privacy Policy</a>
+        </p>
+      </div>
+    </footer>
+    <link rel="preload" href="/css/end.css?v=d89a6f" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="/css/end.css?v=d89a6f">
+    </noscript>
+    <script type="text/template" id="popup-template">
+      <div class="popup popup--hidden">
+      <div class="popup__inner">
+        <p class="popup__title"></p>
+        <button class="popup__close">
+          <span class="popup__close-icon" style="--u:url(/icons/close.svg?v=d89a6f)"></span>
+        </button>
+        <div class="popup__content" ss-container></div>
+          <div class="popup__footer saved-buttons">
+            <button class="button button--primary saved-buttons__item" id="downloadAll" data-tabindex="saved" data-name="NameGenerator">Скачать</button>
+            <button class="button button--secondary saved-buttons__item" id="deleteAll" data-tabindex="saved">Удалиь </button>
+          </div>
+          <div class="popup__overlay" data-type='saved'>
+            <div class="saved-confirm">
+              <p class="saved-confirm__title">Вы уверены, что хотите удалить все элементы?</p>
+              <div class="saved-confirm__buttons">
+                <button class="button button--primary saved-confirm__button" data-tabindex="confirm" id="confirmYes" data-value="yes">Да, удалить </button>
+                <button class="button button--secondary saved-confirm__button" data-tabindex="confirm" id="confirmNo" data-value="no">Нет, уйти </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="pagi-template" data-template="script">
+      <div>
+        <ul class="pagi__list" data-tid="list"></ul>
+        <li class="pagi__item" data-tid="item"></li>
+        <button class="pagi__button" data-tid="button"></button>
+        <span class="pagi__text" data-tid="ellipsis">&hellip;</span>
+        <button class="pagi__button pagi__button--prev" data-tid="prev-button">
+          <span class="pagi__text">Предыдущий </span>
+        </button>
+        <button class="pagi__button pagi__button--next" data-tid="next-button">
+          <span class="pagi__text">Дальше </span>
+        </button>
+      </div>
+    </script>
+    <script type="text/template" id="saved-template">
+      <div class="saved popup__saved">
+        <div class="saved__empty">
+          <p class="saved__empty-text">Здесь нет никаких предметов</p>
+        </div>
+        <div class="saved__item" data-slot="category">
+          <p class="saved__title">
+            <span class="saved__title-text" data-slot="title"></span>
+          </p>
+          <ul class="saved-list saved__list" data-slot="content">
+            <div class="result results__item" data-slot="text-outer">
+              <div class="result__content">
+                <div class="result__text-outer">
+                  <p class="result__text result__text--has-line" data-slot="text"></p>
+                </div>
+                <div class="result__buttons">
+                  <!-- result__button--show-status data-status="Copied" -->
+                  <button class="result__button result__button--hover result__button--copy" data-tabindex="result">
+                    <span class="result__icon result__icon--copy" style="--u:url(/icons/copy.svg?v=d89a6f)"></span>
+                  </button>
+                  <button class="result__button result__button--erase">
+                    <span class="result__icon result__icon--erase" style="--u:url(/icons/cross-saved.svg?v=d89a6f)"></span>
+                  </button>
+                  <button class="result__button result__button--hidden result__button--back">
+                    <span class="result__icon result__icon--undo" style="--u:url(/icons/undo.svg?v=d89a6f)"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="notice-template">
+      <li class="notice__item">
+        <div class="notice__content">
+          <span class="notice__type">
+          <span class="notice__type-icon" style="--u:url(/icons/info.svg?v=d89a6f)"></span>
+          </span>
+          <p class="notice__text" data-elem="text"></p>
+          <button class="notice__close">
+            <span class="notice__close-icon" style="--u:url(/icons/close.svg?v=d89a6f)"></span>
+          </button>
+        </div>
+      </li>
+    </script>
+    <script src='custom-select.js' defer></script>
+    <script src='common.js' defer></script>
+    <script src='simple-scrollbar.js' defer></script>
+    <script>
+    var _paq = window._paq = window._paq || []; /* tracker methods like "setCustomDimension" should be called before "trackPageView" */ _paq.push(['trackPageView']); _paq.push(['enableLinkTracking']); (function() { var u="https://stats.monohost.com/"; _paq.push(['setTrackerUrl', u+'matomo.php']); _paq.push(['setSiteId', '158']); var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s); })();</script>
+  </body>
+</html>
