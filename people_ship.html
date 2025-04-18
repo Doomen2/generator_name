@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор названий судов</title>
+    <meta name="description" content="Эффективно генерируйте названия судов на основе выбранного типа">
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --light-text: #6c757d;
+            --border-color: #dee2e6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f7ff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .main {
+            padding: 40px 0;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #3a5bef;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .results-container {
+            margin-top: 30px;
+        }
+
+        .results-list {
+            list-style: none;
+        }
+
+        .results-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .results-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .copy-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius:
+            4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #e05555;
+        }
+
+        .saved-btn {
+            background-color: #6c757d;
+            margin-left: 10px;
+        }
+
+        .saved-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .actions {
+            display: flex;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            margin-top: 40px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Генератор названий судов</a>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="card">
+                <h1>Генератор названий судов</h1>
+                <p>Выберите параметры и получите уникальные названия</p>
+                
+                <form id="shipNameGeneratorForm">
+                    <div class="form-group">
+                        <label for="type">Тип судна:</label>
+                        <select name="type" id="type" required>
+                            <option value="" disabled selected>Выберите тип судна</option>
+                            <option value="warship">Военные корабли</option>
+                            <option value="cargo">Грузовые суда</option>
+                            <option value="fishing">Рыболовные суда</option>
+                            <option value="yacht">Яхты</option>
+                            <option value="cruise">Круизные лайнеры</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">Количество названий (1-20):</label>
+                        <input type="number" name="quantity" id="quantity" min="1" max="20" value="5" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Сгенерировать названия</button>
+                </form>
+            </div>
+            
+            <div class="card results-container" id="resultsContainer" style="display: none;">
+                <h2>Результаты:</h2>
+                <ul class="results-list" id="resultsList"></ul>
+                
+                <div style="margin-top: 20px;">
+                    <button id="copyAllBtn" class="btn">Копировать все</button>
+                    <button id="saveAllBtn" class="btn saved-btn">Сохранить все</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 Генератор названий судов. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('shipNameGeneratorForm');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsList = document.getElementById('resultsList');
+            const copyAllBtn = document.getElementById('copyAllBtn');
+            const saveAllBtn = document.getElementById('saveAllBtn');
+            
+            // База данных названий судов
+            const shipNamesDatabase = {
+                warship: ["Адмирал Кузнецов", "Петр Великий", "Москва", "Варяг", "Севастополь", "Кронштадт", "Ушаков", "Нахимов", "Гром", "Орёл"],
+                cargo: ["Атлантик", "Тихий океан", "Северный ветер", "Грузовик", "Меркурий", "Юпитер", "Сатурн", "Нептун", "Полярная звезда", "Морской путь", "Волна", "Океан", "Грузовой экспресс", "Морской гигант"],
+                fishing: ["Рыбак", "Улов", "Морской улов", "Рыбный день", "Сеть", "Крючок", "Прилив", "Волна", "Акула", "Кит"],
+                yacht: ["Мечта", "Свобода", "Ветер", "Морская звезда", "Оазис", "Рай", "Солнце", "Луна", "Волна", "Шторм"],
+                cruise: ["Королева морей", "Океанский гигант", "Морской бриз", "Парадиз", "Солнечный луч", "Лунный свет", "Звезда", "Волна", "Шторм", "Морской путь"]
+            };
+            
+            // Обработка отправки формы
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const type = form.type.value;
+                const quantity = parseInt(form.quantity.value);
+                
+                // Проверка ввода
+                if (quantity < 1 || quantity > 20) {
+                    alert("Пожалуйста, введите количество от 1 до 20.");
+                    return;
+                }
+                
+                // Генерация названий судов
+                const shipNames = generateShipNames(type, quantity);
+                
+                // Отображение результатов
+                displayResults(shipNames);
+            });
+            
+            // Функция генерации названий судов
+            function generateShipNames(type, quantity) {
+                const shipNamesPool = shipNamesDatabase[type];
+                const result = [];
+                
+                // Если запрошено больше названий, чем есть в базе, повторяем названия
+                for (let i = 0; i < quantity; i++) {
+                    const randomIndex = Math.floor(Math.random() * shipNamesPool.length);
+                    result.push(shipNamesPool[randomIndex]);
+                }
+                
+                return result;
+            }
+            
+            // Функция отображения результатов
+            function displayResults(shipNames) {
+                resultsList.innerHTML = ''; // Очищаем предыдущие результаты
+                
+                shipNames.forEach(name => {
+                    const li = document.createElement('li');
+                    li.textContent = name;
+                    
+                    const copyBtn = document.createElement('button');
+                    copyBtn.textContent = 'Копировать';
+                    copyBtn.classList.add('copy-btn');
+                    copyBtn.addEventListener('click', () => {
+                        navigator.clipboard.writeText(name).then(() => {
+                            alert('Название скопировано: ' + name);
+                        });
+                    });
+                    
+                    const saveBtn = document.createElement('button');
+                    saveBtn.textContent = 'Сохранить';
+                    saveBtn.classList.add('saved-btn');
+                    saveBtn.addEventListener('click', () => {
+                        saveShipName(name);
+                    });
+                    
+                    const actions = document.createElement('div');
+                    actions.classList.add('actions');
+                    actions.appendChild(copyBtn);
+                    actions.appendChild(saveBtn);
+                    
+                    li.appendChild(actions);
+                    resultsList.appendChild(li);
+                });
+                
+                resultsContainer.style.display = 'block'; // Показываем контейнер с результатами
+            }
+            
+            // Функция копирования всех названий
+            copyAllBtn.addEventListener('click', () => {
+                const allShipNames = Array.from(resultsList.children).map(li => li.textContent.split('Копировать')[0].trim());
+                navigator.clipboard.writeText(allShipNames.join('\n')).then(() => {
+                    alert('Все названия скопированы!');
+                });
+            });
+            
+            // Функция сохранения всех названий
+            saveAllBtn.addEventListener('click', () => {
+                const allShipNames = Array.from(resultsList.children).map(li => li.textContent.split('Копировать')[0].trim());
+                allShipNames.forEach(name => saveShipName(name));
+                alert('Все названия сохранены!');
+            });
+            
+            // Функция сохранения одного названия
+            function saveShipName(name) {
+                // Здесь можно добавить логику для сохранения названия (например, в localStorage или на сервер)
+                console.log('Сохранено:', name);
+            }
+        });
+    </script>
+</body>
+</html>

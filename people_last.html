@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор фамилий по происхождению</title>
+    <meta name="description" content="Эффективно генерируйте фамилии на основе выбранного происхождения">
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --light-text: #6c757d;
+            --border-color: #dee2e6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f7ff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .main {
+            padding: 40px 0;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #3a5bef;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .results-container {
+            margin-top: 30px;
+        }
+
+        .results-list {
+            list-style: none;
+        }
+
+        .results-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .results-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .copy-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius:
+            4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #e05555;
+        }
+
+        .saved-btn {
+            background-color: #6c757d;
+            margin-left: 10px;
+        }
+
+        .saved-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .actions {
+            display: flex;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            margin-top: 40px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Генератор фамилий</a>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="card">
+                <h1>Генератор фамилий по происхождению</h1>
+                <p>Выберите параметры и получите уникальные фамилии</p>
+                
+                <form id="surnameGeneratorForm">
+                    <div class="form-group">
+                        <label for="origin">Происхождение:</label>
+                        <select name="origin" id="origin" required>
+                            <option value="" disabled selected>Выберите происхождение</option>
+                            <option value="russian">Русское</option>
+                            <option value="english">Английское</option>
+                            <option value="french">Французское</option>
+                            <option value="german">Немецкое</option>
+                            <option value="spanish">Испанское</option>
+                            <option value="italian">Итальянское</option>
+                            <option value="japanese">Японское</option>
+                            <option value="chinese">Китайское</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">Количество фамилий (1-20):</label>
+                        <input type="number" name="quantity" id="quantity" min="1" max="20" value="5" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Сгенерировать фамилии</button>
+                </form>
+            </div>
+            
+            <div class="card results-container" id="resultsContainer" style="display: none;">
+                <h2>Результаты:</h2>
+                <ul class="results-list" id="resultsList"></ul>
+                
+                <div style="margin-top: 20px;">
+                    <button id="copyAllBtn" class="btn">Копировать все</button>
+                    <button id="saveAllBtn" class="btn saved-btn">Сохранить все</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 Генератор фамилий. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('surnameGeneratorForm');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsList = document.getElementById('resultsList');
+            const copyAllBtn = document.getElementById('copyAllBtn');
+            const saveAllBtn = document.getElementById('saveAllBtn');
+            
+            // База данных фамилий
+            const surnamesDatabase = {
+                russian: ["Иванов", "Петров", "Сидоров", "Кузнецов", "Смирнов", "Попов", "Лебедев", "Васильев", "Захаров", "Морозов"],
+                english: ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"],
+                french: ["Martin", "Bernard", "Dubois", "Thomas", "Robert", "Petit", "Durand", "Leroy", "Moreau", "Simon"],
+                german: ["Müller", "Schmidt", "Schneider", "Fischer", "Weber", "Meyer", "Wagner", "Becker", "Schulz", "Hoffmann"],
+                spanish: ["García", "Fernández", "González", "Rodríguez", "López", "Martínez", "Sánchez", "Pérez", "Gómez", "Martín"],
+                italian: ["Rossi", "Russo", "Ferrari", "Esposito", "Bianchi", "Romano", "Colombo", "Ricci", "Marino", "Greco"],
+                japanese: ["Sato", "Suzuki", "Takahashi", "Tanaka", "Watanabe", "Ito", "Yamamoto", "Nakamura", "Kobayashi", "Kato"],
+                chinese: ["Wang", "Li", "Zhang", "Liu", "Chen", "Yang", "Huang", "Zhao", "Wu", "Zhou"]
+            };
+            
+            // Обработка отправки формы
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const origin = form.origin.value;
+                const quantity = parseInt(form.quantity.value);
+                
+                // Проверка ввода
+                if (quantity < 1 || quantity > 20) {
+                    alert("Пожалуйста, введите количество от 1 до 20.");
+                    return;
+                }
+                
+                // Генерация фамилий
+                const surnames = generateSurnames(origin, quantity);
+                
+                // Отображение результатов
+                displayResults(surnames);
+            });
+            
+            // Функция генерации фамилий
+            function generateSurnames(origin, quantity) {
+                const surnamesPool = surnamesDatabase[origin];
+                const result = [];
+                
+                // Если запрошено больше фамилий, чем есть в базе, повторяем фамилии
+                for (let i = 0; i < quantity; i++) {
+                    const randomIndex = Math.floor(Math.random() * surnamesPool.length);
+                    result.push(surnamesPool[randomIndex]);
+                }
+                
+                return result;
+            }
+            
+              // Функция отображения результатов
+              function displayResults(surnames) {
+                resultsList.innerHTML = ''; // Очищаем предыдущие результаты
+                
+                surnames.forEach(surname => {
+                    const li = document.createElement('li');
+                    li.textContent = surname;
+                    
+                    const copyBtn = document.createElement('button');
+                    copyBtn.textContent = 'Копировать';
+                    copyBtn.classList.add('copy-btn');
+                    copyBtn.addEventListener('click', () => {
+                        navigator.clipboard.writeText(surname).then(() => {
+                            alert('Фамилия скопирована: ' + surname);
+                        });
+                    });
+                    
+                    const saveBtn = document.createElement('button');
+                    saveBtn.textContent = 'Сохранить';
+                    saveBtn.classList.add('saved-btn');
+                    saveBtn.addEventListener('click', () => {
+                        saveSurname(surname);
+                    });
+                    
+                    const actions = document.createElement('div');
+                    actions.classList.add('actions');
+                    actions.appendChild(copyBtn);
+                    actions.appendChild(saveBtn);
+                    
+                    li.appendChild(actions);
+                    resultsList.appendChild(li);
+                });
+                
+                resultsContainer.style.display = 'block'; // Показываем контейнер с результатами
+            }
+            
+            // Функция копирования всех фамилий
+            copyAllBtn.addEventListener('click', () => {
+                const allSurnames = Array.from(resultsList.children).map(li => li.textContent.split('Копировать')[0].trim());
+                navigator.clipboard.writeText(allSurnames.join('\n')).then(() => {
+                    alert('Все фамилии скопированы!');
+                });
+            });
+            
+            // Функция сохранения всех фамилий
+            saveAllBtn.addEventListener('click', () => {
+                const allSurnames = Array.from(resultsList.children).map(li => li.textContent.split('Копировать')[0].trim());
+                allSurnames.forEach(surname => saveSurname(surname));
+                alert('Все фамилии сохранены!');
+            });
+            
+            // Функция сохранения одной фамилии
+            function saveSurname(surname) {
+                // Здесь можно добавить логику для сохранения фамилии (например, в localStorage или на сервер)
+                console.log('Сохранено:', surname);
+            }
+        });
+    </script>
+</body>
+</html>

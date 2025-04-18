@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор генеративных имен</title>
+    <meta name="description" content="Эффективно генерируйте уникальные генеративные имена">
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ff6b6b;
+            --text-color: #333;
+            --light-text: #6c757d;
+            --border-color: #dee2e6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f7ff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .main {
+            padding: 40px 0;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #3a5bef;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .results-container {
+            margin-top: 30px;
+        }
+
+        .results-list {
+            list-style: none;
+        }
+
+        .results-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: var(--secondary-color);
+            border-radius: var(--border-radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .results-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .copy-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #e05555;
+        }
+
+        .saved-btn {
+            background-color: #6c757d;
+            margin-left: 10px;
+        }
+
+        .saved-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .actions {
+            display: flex;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            margin-top: 40px;
+           
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Генератор генеративных имен</a>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="card">
+                <h1>Генератор генеративных имен</h1>
+                <p>Выберите параметры и получите уникальные имена</p>
+                
+                <form id="generativeNameGeneratorForm">
+                    <div class="form-group">
+                        <label for="type">Тип имени:</label>
+                        <select name="type" id="type" required>
+                            <option value="" disabled selected>Выберите тип имени</option>
+                            <option value="fantasy">Фэнтези</option>
+                            <option value="sci-fi">Научная фантастика</option>
+                            <option value="mythological">Мифологические</option>
+                            <option value="modern">Современные</option>
+                            <option value="mystical">Мистические</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">Количество имен (1-20):</label>
+                        <input type="number" name="quantity" id="quantity" min="1" max="20" value="5" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Сгенерировать имена</button>
+                </form>
+            </div>
+            
+            <div class="card results-container" id="resultsContainer" style="display: none;">
+                <h2>Результаты:</h2>
+                <ul class="results-list" id="resultsList"></ul>
+                
+                <div style="margin-top: 20px;">
+                    <button id="copyAllBtn" class="btn">Копировать все</button>
+                    <button id="saveAllBtn" class="btn saved-btn">Сохранить все</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 Генератор генеративных имен. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('generativeNameGeneratorForm');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsList = document.getElementById('resultsList');
+            const copyAllBtn = document.getElementById('copyAllBtn');
+            const saveAllBtn = document.getElementById('saveAllBtn');
+            
+            // База данных генеративных имен
+            const generativeNamesDatabase = {
+                fantasy: ["Эльдарин", "Аэлис", "Торин", "Люмиэль", "Сильвана", "Драконис", "Фэйра", "Морвен", "Арвен", "Галадриэль"],
+                "sci-fi": ["Нексус", "Зион", "Астра", "Киберон", "Нова", "Орион", "Квантум", "Соларис", "Эклипс", "Галактика"],
+                mythological: ["Зевс", "Афина", "Один", "Фрейя", "Анубис", "Исида", "Тор", "Локи", "Гера", "Аполлон"],
+                modern: ["Эмили", "Лиам", "София", "Ноа", "Ава", "Джеймс", "Миа", "Лука", "Изабелла", "Этан"],
+                mystical: ["Моргана", "Мерлин", "Равенна", "Эльрик", "Серафина", "Драко", "Лунара", "Тенис", "Азраэль", "Лилит"]
+            };
+            
+            // Обработка отправки формы
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const type = form.type.value;
+                const quantity = parseInt(form.quantity.value);
+                
+                // Проверка ввода
+                if (quantity < 1 || quantity                 > 20) {
+                    alert("Пожалуйста, введите количество имен от 1 до 20.");
+                    return;
+                }
+
+                // Очистка предыдущих результатов
+                resultsList.innerHTML = '';
+
+                // Генерация имен
+                const names = [];
+                for (let i = 0; i < quantity; i++) {
+                    const randomIndex = Math.floor(Math.random() * generativeNamesDatabase[type].length);
+                    names.push(generativeNamesDatabase[type][randomIndex]);
+                }
+
+                // Отображение результатов
+                names.forEach(name => {
+                    const li = document.createElement('li');
+                    li.textContent = name;
+                    resultsList.appendChild(li);
+                });
+
+                resultsContainer.style.display = 'block';
+            });
+
+            // Копирование всех имен
+            copyAllBtn.addEventListener('click', function() {
+                const names = Array.from(resultsList.children).map(li => li.textContent).join('\n');
+                navigator.clipboard.writeText(names).then(() => {
+                    alert("Все имена скопированы в буфер обмена!");
+                });
+            });
+
+            // Сохранение всех имен в файл
+            saveAllBtn.addEventListener('click', function() {
+                const names = Array.from(resultsList.children).map(li => li.textContent).join('\n');
+                const blob = new Blob([names], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'generated_names.txt';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+        });
+    </script>
+</body>
+</html>
+
